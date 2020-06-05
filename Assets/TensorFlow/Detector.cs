@@ -55,7 +55,7 @@ public class Detector : MonoBehaviour
                     double[] anchors = null)
     {
 
-#if UNITY_ANDROID
+#if (UNITY_ANDROID && !UNITY_EDITOR)
         TensorFlowSharp.Android.NativeBinding.Init ();
 #endif
         graph = new TFGraph();

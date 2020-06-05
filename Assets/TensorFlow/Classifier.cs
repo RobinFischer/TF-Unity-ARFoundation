@@ -27,7 +27,7 @@ public class Classifier
                       float mean = 127.5f,
                       float std = 127.5f)
     {
-#if UNITY_ANDROID
+#if (UNITY_ANDROID && !UNITY_EDITOR)
         TensorFlowSharp.Android.NativeBinding.Init ();
 #endif
         graph = new TFGraph();
@@ -95,7 +95,7 @@ public class Classifier
 
         var results = list.OrderByDescending(i => i.Value).Take(numResults).ToList();
 
-        //Utils.Log(results);
+        Utils.Log(results);
 
         return results;
     }
